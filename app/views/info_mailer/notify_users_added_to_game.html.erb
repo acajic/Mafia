@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+</head>
+<body>
+<h1>Hello, </h1>
+<p>
+  <b><%= @user_creator.username %></b> added you to the game <b><i><%= @city.name %></i></b>.
+</p>
+<p>
+  To join the fun, login to the <a href="<%= @url %>">site</a>, and you will see the new game under 'My Cities'.
+</p>
+
+<br/>
+<br/>
+<p style="font-size: small">
+  If you no longer wish to receive this kind of emails, unsubscribe <a href="<%= @unsubscribe_url %>">here</a>.
+</p>
+</body>
+</html>

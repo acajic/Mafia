@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+</head>
+<body>
+<h1> <%= @user.username %>, </h1>
+<p>
+  Game creator <b><%= @user_creator.username %></b> has accepted your request to join the game <b><i><%= @city.name %></i></b>.
+</p>
+<p>
+    Login to the <a href="<%= @url %>">site</a>, and you will see the game under 'My Cities'.
+</p>
+
+<br/>
+<br/>
+<p style="font-size: small">
+  If you no longer wish to receive this kind of emails, unsubscribe <a href="<%= @unsubscribe_url %>">here</a>.
+</p>
+
+</body>
+</html>
