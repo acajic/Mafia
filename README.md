@@ -14,8 +14,8 @@ Production comes with empty database. The first registered user is automatically
 
 3) Search the project for comment "# initial setup" and fill out the variables specified in various config files.
 These variables include:
-
-  *config.action_mailer.smtp_settings* (here I used sendgrid.net service, my username and password from that site and the exposemafia.com as the domain)
+	
+	*config.action_mailer.smtp_settings* (here I used sendgrid.net service, my username and password from that site and the exposemafia.com as the domain)
 	
 	*config.action_mailer.default_url_options* (here I used :host => 'http://188.226.245.205:3000' because it is a root url on which all other build upon in my case. This is for normal functioning of the mailer. So, whatever you put here, it will be easy to test whether all the links work in emails that app sends to users upon registration or invitation to a game.)
 	
