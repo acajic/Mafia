@@ -26,3 +26,10 @@ These variables include:
 	
 ![Database Diagram](DatabaseDiagram.png)
 
+Gray tables are not relevant to the game. They are some side functionalities.
+
+Purple tables are about system roles and app permissions (super admin, admin, game creator, user).
+
+Dark blue tables are the ones that are used throughout the game but their contents never change after the app is deployed. Only after an update will, for example, a new role be offered for players to play with.
+
+Light blue tables are the most active ones.
