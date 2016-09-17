@@ -1,6 +1,8 @@
 Mafia server side
 ==========
 
+# Setup
+
 Here are the instructions on how to setup the server side of the Mafia web app after pulling the Git repository. If you want the corresponding front end, the repository is https://github.com/acajic/MafiaFront
 
 1) config/database.yml
@@ -20,6 +22,7 @@ These variables include:
 	*config.action_mailer.default_url_options* (here I used :host => 'http://188.226.245.205:3000' because it is a root url on which all other build upon in my case. This is for normal functioning of the mailer. So, whatever you put here, it will be easy to test whether all the links work in emails that app sends to users upon registration or invitation to a game.)
 	
 
+# Database
 	
 ![Database Diagram](DatabaseDiagram.png)
 
