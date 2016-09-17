@@ -1,7 +1,7 @@
 Mafia server side
 ==========
 
-Here are the instructions on how to setup the server side of the Mafia web app after pulling the Git repository.
+Here are the instructions on how to setup the server side of the Mafia web app after pulling the Git repository. If you want the corresponding front end, the repository is https://github.com/acajic/MafiaFront
 
 1) config/database.yml
 Set up the username, password and ip address of your SQL server.
