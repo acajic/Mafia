@@ -81,3 +81,5 @@ Each game `role` belongs to an `affiliation`. Only `affiliations` can actually w
 
 Each `role` has on disposal certain `action_types`. Some `action_types` have `action_type_params`. These are usually numerical variables that modify the action type. For example, a detective's investigate action can be modified such that a detective only has the option to use his investigation ability 3 or 4 times during entire game.
 
+
+At night start or day start, many actions hit their trigger. There are a lot of various action types that cannot be evaluated simply on their own. For example, the success of mafia nightkill voting will certaintly depend on the doctors actions or the absence of them. This is where `action_resolvers` come to play. At 'night start' and 'day start' triggers, a list of action resolvers are employed to make final changes to the game state based on the sum of all unprocessed actions. Each `action_resolver` has the **ordinal** parameter - a number that specifies the order of the executions of action resolvers.
