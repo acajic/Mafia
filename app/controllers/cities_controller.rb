@@ -192,7 +192,7 @@ class CitiesController < ApplicationController
   param :city_id, Fixnum, :required => true, :desc => "A #{RESOURCE} id."
   def show
     @city = City.includes(:days, :invitations, :join_requests, :role_picks, :residents).find(params[:id])
-    if @city.last_accessed_at < 5.minutes.ago
+    if @city.last_accessed_at.nil? || @city.last_accessed_at < 5.minutes.ago
       @city.last_accessed_at = Time.now()
       @city.save()
     end
