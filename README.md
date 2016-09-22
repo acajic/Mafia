@@ -46,6 +46,7 @@ When a user joins a game, they become `residents` of that `city`. So, a `residen
 During the course of a game, a user that is a resident of the city can submit `actions`. There are different types of actions that a resident can submit. All of the action types are available in the corresponding table `action_types`. When submitting an action, resident also specifies as what `role` is submitting that action. A resident can assume any role, and submit any action with any role. It is only at the `trigger` time of each of these actions that it will be determined whether the action was **valid**, **void** or **malformed**. The result of each action is determined based on this evaluation.
 
 Triggers are: 
+
 1. night start
 2. day start
 3. both
