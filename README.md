@@ -83,3 +83,22 @@ Each `role` has on disposal certain `action_types`. Some `action_types` have `ac
 
 
 At night start or day start, many actions hit their trigger. There are a lot of various action types that cannot be evaluated simply on their own. For example, the success of mafia nightkill voting will certaintly depend on the doctors actions or the absence of them. This is where `action_resolvers` come to play. At 'night start' and 'day start' triggers, a list of action resolvers are employed to make final changes to the game state based on the sum of all unprocessed actions. Each `action_resolver` has the **ordinal** parameter - a number that specifies the order of the executions of action resolvers.
+
+
+# Adding a new role
+
+Most of the feedback from users are actually requests to implement some of the game roles of their liking. Here, I will briefly explain the procedure to do that.
+Keep in mind the database schema explained in previous section.
+
+Obviously, new game role requires a new record in the `roles` table. The correct way to do it is by creating a Rails model class. Let's say we are creating a common role called Vigilante. 
+
+1) We create `vigilante.rb` in `mafia/app/models/role/` and use any of the existing roles as a template.
+2) Edit `mafia/db/seed/base.rb` and make sure that the new role is inserted in the database when it is initialized
+3) Create action type(s) and corresponding action result type(s) for a new role. In the Vigilante example, create the `vigilante_kill.rb` (unimaginative name of the action type) in the `mafia/app/models/action_type/`. Use some existing action type as a template. Also, create `vigilante_kill.rb` in `mafia/app/models/action_result_type/` and just use an existing action result type as a template. Edit the `mafia/db/seed/base.rb` to make sure that both action type and action result type are added to the database on initialization.
+In your action type `mafia/app/models/action_type/vigilante_kill.rb` you will have to implement `before_creation`, `create_valid_action_results` (what should happen when a true vigilante performs 'vigilante_kill' action) and `create_void_action_results` (what happens when a player fakes his roles and submits 'vigilante_kill' action even though vigilante is not his true role). In `before_creation`, specify the id of the corresponding action result type `mafia/app/models/action_result_type/vigilante_kill.rb`. This is just the databse id of new action result type in `action_result_types` database table.
+4) If an action type produces some effect on the game regardless of all other players and regardless of their actions, then that's it. But, if the success of your action depends on the action of a doctor or some other game role, then you need an action resolver. For example, if a doctor can protect against vigilante's kill action, you need a specific action resolver just for this. Create `protect_vigilante_kill.rb` in `mafia/app/models/action_resolver/`. Here, you will also probably need to check how everything is done in other action resolvers such as `mafia/app/models/action_resolver/protect_vote_mafia.rb`.
+Basically, each resolver implements the `resolve` method. And this method gets as an argument all of the action results that specific action types generated in `create_valid_action_results` and `create_void_action_results`. All these action results are sorted in hashes (maps, dictionaries) using their class as a key and the list of actual action results as the value. Every action resolver needs behave nicely and pick only the action results that are relevant to its own functionality and make modifications only on those.
+
+
+
+
